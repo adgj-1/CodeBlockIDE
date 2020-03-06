@@ -146,7 +146,7 @@ public class FunctionModule extends Module implements Container {
 		}
 		for (int slot = 2; slot < params.length + 2; slot++) {
 			
-			if (params[slot-2].equals(c)) {
+			if (params[slot-2] != null && params[slot-2].equals(c)) {
 				return slot;
 			}
 		}
@@ -176,7 +176,7 @@ public class FunctionModule extends Module implements Container {
 				}
 			}
 			if (m.x > x + 40 + i * 80 && m.x < x + 120 + i * 80 && m.y > y && m.y < y + headerHeight) {
-				if (m instanceof VariableModule && ((VariableModule)m).getType().equals(f.getParameters()[i].getType())) {
+				if (m instanceof VariableModule && (((VariableModule)m).getType().equals(f.getParameters()[i].getType()) || f.getParameters()[i].getType().equals("var"))) {
 					input(m, i + 2);
 					return true;
 				} else {

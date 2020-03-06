@@ -81,6 +81,9 @@ public class CodeModuleManager {
 															"public static void press()",
 															"public static void release()"});
 		moduleList.add(ml);
+		
+		CodeBlockModule initFunction = new CallerModule("","init();","", new String[] {"public static void init()"});
+		moduleList.add(initFunction);
 		CodeBlockModule commonFunctions = new FuncModule("","","",new String[] {"if(boolean status)"});
 		moduleList.add(commonFunctions);
 		loadModules();

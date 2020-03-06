@@ -36,8 +36,8 @@ public class ModuleToolbar extends UIComponent {
 			modules.add(new MethodModule(m));
 		}
 		
-		modules.add(new ConstantFunctionModule(new Method("Print(int num)", ""), "System.out.println(arg0)"));
-		
+		modules.add(new ConstantFunctionModule(new Method("Print(var num)", ""), "System.out.println(arg0)"));
+		modules.add(new ConstantFunctionModule(new Method("Set(var v1, var v2)", ""), "arg0 = arg1;"));
 		for (Method v : VariableHandler.functionList) {
 			modules.add(new FunctionModule(v));
 		}
@@ -53,7 +53,7 @@ public class ModuleToolbar extends UIComponent {
 		
 		modules.add(new ConstantModule(new main.variables.Boolean("")));
 		modules.add(new ConstantModule(new Natural("")));
-		width = 200;
+		width = 300;
 		height = 800;
 		
 		int posY = y - scrollPos + 20;

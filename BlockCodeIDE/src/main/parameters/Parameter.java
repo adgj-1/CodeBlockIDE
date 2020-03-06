@@ -7,6 +7,6 @@ public class Parameter {
 	}
 	
 	public String getType() {
-		return "int";
+		return "var";
 	}
 }

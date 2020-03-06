@@ -30,6 +30,7 @@ public class VariableHandler {
 		variableList.add(generateVariable("pred || boolean boolean boolean"));
 		variableList.add(generateVariable("pred > int int boolean"));
 		variableList.add(generateVariable("pred < int int boolean"));
+		
 	}
 	
 	

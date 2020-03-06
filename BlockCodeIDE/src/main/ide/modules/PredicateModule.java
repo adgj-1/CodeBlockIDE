@@ -121,13 +121,13 @@ public class PredicateModule extends VariableModule implements Container {
 		}
 		
 		if (m.x > x && m.x < x + width/2 && m.y > y && m.y < y + height) {
-			if (((VariableModule)m).getType().equals(((Predicate) v).getTypeA())) {
+			if (((VariableModule)m).getType().equals(((Predicate) v).getTypeA()) || ((Predicate) v).getTypeA().equals("var")) {
 				input(m, 0);
 				return true;
 			}
 		}
 		if (m.x > x + width/2 && m.x < x + width && m.y > y && m.y < y + height) {
-			if (((VariableModule)m).getType().equals(((Predicate) v).getTypeB())) {
+			if (((VariableModule)m).getType().equals(((Predicate) v).getTypeB()) || ((Predicate) v).getTypeA().equals("var")) {
 				input(m, 1);
 				return true;
 			}

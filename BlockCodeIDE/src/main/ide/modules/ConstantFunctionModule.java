@@ -24,20 +24,21 @@ public class ConstantFunctionModule extends FunctionModule {
 		
 		height = headerHeight;
 		headerHeight = DEFAULT_HEADER_HEIGHT;
-		width = 140;
+		int tempWidth = 60;
 		for (int i = 0; i < params.length; i++) {
 			if (params[i] != null) {
 				((Module)params[i]).move(x + strWidth + 15 + i * 80, y + 5);
 				((Module) params[i]).draw(g);
 				headerHeight = ((Module)params[i]).getHeight() + 10;
 				height = headerHeight;
-				width = 60 + ((Module) params[i]).getW();
+				tempWidth += ((Module) params[i]).getW();
 			} else {
 				g.setColor(Color.WHITE);
 				g.fillRoundRect(x + strWidth + 15 + i * 80, y + 5, 80, 20, 5, 5);
+				tempWidth += 80;
 			}
 		}
-		
+		width = tempWidth;
 		if (restList != null) {
 			((Module)restList).move(x, y + getHeight());
 			height = getHeight() + ((Module)restList).height;
@@ -66,6 +67,7 @@ public class ConstantFunctionModule extends FunctionModule {
 			}
 		}
 		
+		int pos = x + (strWidth + 15);
 		for (int i = 0; i < params.length; i++) {
 			if (params[i] != null && params[i] instanceof Container) {
 				boolean done = ((Module)(params[i])).dropIn(m);
@@ -77,14 +79,16 @@ public class ConstantFunctionModule extends FunctionModule {
 			if (params[i] != null) {
 				p_w = ((Module) params[i]).getW();
 			}
-			if (m.x > x + (strWidth + 15) + i * 80 && m.x < x + (strWidth + 15 + p_w) + i * 80 && m.y > y && m.y < y + headerHeight) {
-				if (((VariableModule)m).getType().equals(f.getParameters()[i].getType())) {
+			if (m.x > pos  && m.x < pos + p_w && m.y > y && m.y < y + headerHeight) {
+				if (((VariableModule)m).getType().equals(f.getParameters()[i].getType()) || f.getParameters()[i].getType().equals("var")) {
 					input(m, i + 2);
 					return true;
 				} else {
-//					System.out.print(((VariableModule)m).getType() + ", " + f.getParameters()[i].getType()); //!!!
+					//System.out.print(((VariableModule)m).getType() + ", " + f.getParameters()[i].getType()); //!!!
 				}
+				
 			}
+			pos += p_w;
 		}
 	
 		
